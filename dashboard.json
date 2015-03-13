@@ -1,0 +1,293 @@
+{
+  "category": "Overview",
+  "title": "Cluster Overview",
+  "summary": "",
+  "definition_href": "/api/dashboard/8/definitinon",
+  "href": "/api/dashboard/8",
+  "id": 8,
+  "imported_from": null,
+  "definition": {
+    "items": [
+      {
+        "css_class": null,
+        "height": null,
+        "item_id": "d14",
+        "item_type": "section",
+        "items": [
+          {
+            "css_class": null,
+            "height": null,
+            "item_id": "d15",
+            "item_type": "row",
+            "items": [
+              {
+                "align": null,
+                "css_class": null,
+                "height": null,
+                "item_id": "d20",
+                "item_type": "cell",
+                "items": [
+                  {
+                    "css_class": null,
+                    "format": ",.3s",
+                    "height": null,
+                    "index": false,
+                    "item_id": "d21",
+                    "item_type": "jumbotron_singlestat",
+                    "query": "allContainerRx",
+                    "thresholds": null,
+                    "title": "net throughput (rx)",
+                    "transform": "mean",
+                    "units": null
+                  }
+                ],
+                "offset": null,
+                "span": "6"
+              },
+              {
+                "align": null,
+                "css_class": null,
+                "height": null,
+                "item_id": "d22",
+                "item_type": "cell",
+                "items": [
+                  {
+                    "css_class": null,
+                    "format": ",.3s",
+                    "height": null,
+                    "index": false,
+                    "item_id": "d23",
+                    "item_type": "jumbotron_singlestat",
+                    "query": "allContainerTx",
+                    "thresholds": null,
+                    "title": "net throughput (tx)",
+                    "transform": "mean",
+                    "units": null
+                  }
+                ],
+                "offset": null,
+                "span": "6"
+              },
+              {
+                "align": null,
+                "css_class": null,
+                "height": null,
+                "item_id": "d11",
+                "item_type": "cell",
+                "items": [
+                  {
+                    "css_class": null,
+                    "format": ",.3s",
+                    "height": null,
+                    "index": false,
+                    "item_id": "d12",
+                    "item_type": "jumbotron_singlestat",
+                    "query": "allContainerMemUsage",
+                    "thresholds": null,
+                    "title": "memory usage",
+                    "transform": "mean",
+                    "units": null
+                  }
+                ],
+                "offset": null,
+                "span": "6"
+              },
+              {
+                "align": null,
+                "css_class": null,
+                "height": null,
+                "item_id": "d24",
+                "item_type": "cell",
+                "items": [
+                  {
+                    "css_class": null,
+                    "format": ",s",
+                    "height": null,
+                    "index": false,
+                    "item_id": "d27",
+                    "item_type": "jumbotron_singlestat",
+                    "query": "clusterEvents",
+                    "thresholds": null,
+                    "title": "events",
+                    "transform": "sum",
+                    "units": null
+                  }
+                ],
+                "offset": null,
+                "span": "6"
+              },
+              {
+                "align": null,
+                "css_class": null,
+                "height": null,
+                "item_id": "d25",
+                "item_type": "cell",
+                "items": [
+                  {
+                    "css_class": null,
+                    "height": null,
+                    "interactive": true,
+                    "item_id": "d26",
+                    "item_type": "standard_time_series",
+                    "options": {},
+                    "query": "allContainerMemUsage",
+                    "thresholds": null,
+                    "title": "Container Memory"
+                  }
+                ],
+                "offset": null,
+                "span": "12"
+              },
+              {
+                "align": null,
+                "css_class": null,
+                "height": null,
+                "item_id": "d28",
+                "item_type": "cell",
+                "items": [
+                  {
+                    "css_class": null,
+                    "height": null,
+                    "interactive": true,
+                    "item_id": "d29",
+                    "item_type": "standard_time_series",
+                    "options": {},
+                    "query": "totalNetRxTx",
+                    "thresholds": null,
+                    "title": "Container Network"
+                  }
+                ],
+                "offset": null,
+                "span": "12"
+              }
+            ]
+          },
+          {
+            "css_class": null,
+            "height": null,
+            "item_id": "d17",
+            "item_type": "row",
+            "items": [
+              {
+                "align": null,
+                "css_class": null,
+                "height": null,
+                "item_id": "d33",
+                "item_type": "cell",
+                "items": [
+                  {
+                    "css_class": null,
+                    "height": null,
+                    "interactive": true,
+                    "item_id": "d39",
+                    "item_type": "standard_time_series",
+                    "options": {},
+                    "query": "clusterEvents",
+                    "thresholds": null,
+                    "title": "Events"
+                  }
+                ],
+                "offset": null,
+                "span": "12"
+              },
+              {
+                "align": null,
+                "css_class": null,
+                "height": null,
+                "item_id": "d45",
+                "item_type": "cell",
+                "items": [
+                  {
+                    "css_class": null,
+                    "format": ",.3s",
+                    "height": null,
+                    "include_sums": false,
+                    "item_id": "d48",
+                    "item_type": "percentage_table",
+                    "query": "cpuUsageDiff",
+                    "sortable": true,
+                    "striped": true,
+                    "title": "CPU Distribution",
+                    "transform": "sum"
+                  }
+                ],
+                "offset": null,
+                "span": "12"
+              },
+              {
+                "align": null,
+                "css_class": null,
+                "height": null,
+                "item_id": "d49",
+                "item_type": "cell",
+                "items": [
+                  {
+                    "css_class": null,
+                    "format": ",.3s",
+                    "height": null,
+                    "include_sums": false,
+                    "item_id": "d50",
+                    "item_type": "percentage_table",
+                    "query": "memUsageDiff",
+                    "sortable": true,
+                    "striped": true,
+                    "title": "Memory Distribution",
+                    "transform": "sum"
+                  }
+                ],
+                "offset": null,
+                "span": "12"
+              }
+            ]
+          }
+        ],
+        "layout": "fixed",
+        "title": null
+      }
+    ],
+    "queries": {
+      "allContainerMemUsage": {
+        "name": "allContainerMemUsage",
+        "targets": [
+          "alias(sum(transformNull(docker.stats.containers.nodes.*.*.memory.usage, 0)), \"total memory\")"
+        ]
+      },
+      "allContainerRx": {
+        "name": "allContainerRx",
+        "targets": [
+          "sum(docker.stats.containers.nodes.*.*.network.rxBytes)"
+        ]
+      },
+      "allContainerTx": {
+        "name": "allContainerTx",
+        "targets": [
+          "sum(docker.stats.containers.nodes.*.*.network.txBytes)"
+        ]
+      },
+      "clusterEvents": {
+        "name": "clusterEvents",
+        "targets": [
+          "alias(transformNull(docker.stats.cluster.events, 0), \"event\")"
+        ]
+      },
+      "cpuUsageDiff": {
+        "name": "cpuUsageDiff",
+        "targets": [
+          "aliasByNode(asPercent(docker.stats.containers.nodes.*.*.cpu.totalUsage), 5)"
+        ]
+      },
+      "memUsageDiff": {
+        "name": "memUsageDiff",
+        "targets": [
+          "aliasByNode(asPercent(docker.stats.containers.nodes.*.*.memory.usage), 5)"
+        ]
+      },
+      "totalNetRxTx": {
+        "name": "totalNetRxTx",
+        "targets": [
+          "group(alias(averageSeries(transformNull(docker.stats.containers.nodes.*.*.network.rxBytes, 0)), \"total net (rx)\"),alias(averageSeries(transformNull(docker.stats.containers.nodes.*.*.network.txBytes, 0)), \"total net (tx)\"))"
+        ]
+      }
+    }
+  }
+}
