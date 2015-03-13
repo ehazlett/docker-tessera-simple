@@ -20,6 +20,7 @@ run	invoke run & sleep 5 && invoke json.import 'demo/*.json'
 
 # Supervisord
 add	./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+copy tessera.db /src/tessera/tessera/tessera.db
 
 expose :80
 
