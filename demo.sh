@@ -1,19 +1,31 @@
 #!/bin/bash
-if [ -z "$DOCKER_HOST" ]; then
-    echo "you must have docker and set the DOCKER_HOST env var"
+MACHINE_NAME=${1:-}
+if [ -z "$MACHINE_NAME" ]; then
+    echo "usage: $0 <docker-machine-name>"
     exit 1
 fi
-
-TOKEN=$(docker run swarm create)
-MACHINE_NAME=${1:-tessera-demo}
 
 # check if machine exists
 docker-machine ip $MACHINE_NAME > /dev/null 2>&1
 STATUS=$?
 if [ $STATUS -ne 0 ]; then
-    echo "Creating Swarm"
-    # create machine if not exist
-    docker-machine create -d virtualbox --swarm --swarm-discovery token://$TOKEN --swarm-master $MACHINE_NAME
+    echo "error: you must have a Docker Machine created"
+    exit 1
+fi
+
+# check if machine is a swarm master
+docker-machine env --swarm $MACHINE_NAME > /dev/null 2>&1
+STATUS=$?
+if [ $STATUS -ne 0 ]; then
+    echo "error: machine must be a Swarm master"
+    exit 1
+fi
+
+# get directory for tls certs
+CERT_DIR=/etc/docker
+DRIVER=`docker-machine ls | grep $MACHINE_NAME | awk '{ print $3; }'`
+if [ "$DRIVER" = "virtualbox" ]; then
+    CERT_DIR=/var/lib/boot2docker
 fi
 
 IP=$(docker-machine ip $MACHINE_NAME)
@@ -55,13 +67,14 @@ docker run \
     --name interlock \
     --restart=always \
     -e STATS_CARBON_ADDRESS=$IP:2003 \
-    -v /Users/ehazlett/.docker/machine/machines/$MACHINE_NAME:/m  \
+    -v $CERT_DIR:/certs  \
     ehazlett/interlock:test \
-    --swarm-url $MACHINE_URL \
-    --swarm-tls-ca-cert=/m/ca.pem \
-    --swarm-tls-cert=/m/server.pem \
-    --swarm-tls-key=/m/server-key.pem \
+    --swarm-url tcp://$IP:3376 \
+    --swarm-tls-ca-cert=/certs/ca.pem \
+    --swarm-tls-cert=/certs/server.pem \
+    --swarm-tls-key=/certs/server-key.pem \
     --plugin stats \
+    -D \
     start
 
 echo "Tessera available at http://$IP:8080"
